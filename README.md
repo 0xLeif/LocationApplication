@@ -51,6 +51,22 @@ class MyLocationApplication: LocationApplication {
 
 Subclassing provides a centralized way to manage all facets of location services in your code.
 
+## Using `Application.promote`
+
+For your subclassed `LocationApplication` to effectively manage the location updates, it must be promoted to be the active AppState. This can be achieved using the `promote` function as follows:
+
+```swift
+Application.promote(to: MyLocationApplication.self)
+```
+
+The `promote` function supports dynamic injection and replacement of dependencies. It sets your subclass (`MyLocationApplication`) as the active application state, and all subsequent requests to the `Application` singleton will result in using the promoted `MyLocationApplication`.
+
+With this, your custom location manager delegate methods will be used for handling location updates.
+
+> Note: Make sure to call `Application.promote(to: MyLocationApplication.self)` at a suitable time in your application's lifecycle, such as in the `didFinishLaunchingWithOptions` method in AppDelegate (in UIKit) or the `onAppear` modifier of the initial view (in SwiftUI).
+
+Remember, when testing, overriding is a useful feature of AppState's Application. Overriding, coupled with dependency injection, provides a powerful tool for isolating units of code for testing. As seen in the `LocationApplicationTests`, you can override the standard locationManager with a mock location manager for testing, and later cancel the override.
+
 ## Requirements
 
 - Swift 5.7 or later
