@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "appstate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/0xLeif/AppState.git",
+      "state" : {
+        "revision" : "fed06504aefec9512a767122fa7666c7a1fa832d",
+        "version" : "1.3.1"
+      }
+    },
+    {
+      "identity" : "cache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/0xLeif/Cache",
+      "state" : {
+        "revision" : "a535c68aab7bf0b42bda7a5de66b04f86e48c6e6",
+        "version" : "2.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
