@@ -12,11 +12,13 @@
 ## Getting Started
 To add `LocationApplication` to your Swift project, use the Swift Package Manager. This involves adding a package dependency to your `Package.swift` file.
 
+```swift
 dependencies: [
     .package(url: "https://github.com/0xLeif/LocationApplication.git", from: "0.1.0")
 ]
+```
 
-For App projects, open your project in Xcode and navigate to File > Swift Packages > Add Package Dependency... and enter https://github.com/0xLeif/LocationApplication.git.
+For App projects, open your project in Xcode and navigate to File > Swift Packages > Add Package Dependency... and enter `https://github.com/0xLeif/LocationApplication.git`.
 
 ## Usage 
 Ensure your files include the following import statements:
