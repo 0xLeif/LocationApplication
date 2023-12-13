@@ -16,26 +16,28 @@ class MyLocationApplication: LocationApplication {
 }
 
 final class LocationApplicationTests: XCTestCase {
+    var mockLocationManager: MockLocationManager? {
+        Application.dependency(\.locationManager) as? MockLocationManager
+    }
+
     func testLocationApplication() throws {
         let locationManagerOverride = Application.override(\.locationManager, with: MockLocationManager())
 
-        let abc = try XCTUnwrap(Application.dependency(\.locationManager) as? MockLocationManager)
+        let locationManager = try XCTUnwrap(mockLocationManager)
 
-        XCTAssertNil(abc.delegate)
+        XCTAssertNil(locationManager.delegate)
 
         Application.promote(to: MyLocationApplication.self)
-        
-        XCTAssertNotNil(abc.delegate)
-        XCTAssertTrue(abc.delegate is MyLocationApplication)
 
-        let mockLocationManager = try XCTUnwrap(Application.dependency(\.locationManager) as? MockLocationManager)
+        XCTAssertNotNil(locationManager.delegate)
+        XCTAssertTrue(locationManager.delegate is MyLocationApplication)
 
-        mockLocationManager.test()
+        mockLocationManager?.test()
 
         locationManagerOverride.cancel()
 
-        XCTAssertNotNil(abc.delegate)
-        XCTAssertTrue(abc.delegate is MyLocationApplication)
+        XCTAssertNotNil(locationManager.delegate)
+        XCTAssertTrue(locationManager.delegate is MyLocationApplication)
         XCTAssertFalse(Application.dependency(\.locationManager) is MockLocationManager)
     }
 }
