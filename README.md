@@ -1,4 +1,4 @@
-# LocationApplication
+# LocationApplication (**Prefer using [ApplicationKit](https://github.com/0xLeif/ApplicationKit)**)
 
 `LocationApplication` is a Swift Package Manager (SPM) project architected based on the [AppState](https://github.com/0xLeif/AppState) project. This package provides a simplified approach to handling location updates and region monitoring by providing base classes that manage `CLLocationManager`.
 
